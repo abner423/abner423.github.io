@@ -1,0 +1,13 @@
+.image-landing{
+    background-image: url('../../assets/marioLanding.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: red;
+    width: 100vw;
+    height: 60vh;
+}
+
+.landing-description{
+    padding-left: 10%;
+    padding-top: 2%;
+}
