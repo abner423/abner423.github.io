@@ -1,13 +1,14 @@
 import React from "react";
 import { Container, Row, Col } from 'reactstrap';
 import './Home.css'
+import data from '../../data/products.json'
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-
+            products: data
         }
     }
 
