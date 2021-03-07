@@ -9,9 +9,9 @@ import linkedinIcon from '../../assets/linkedinIcon.png'
 import githubIcon from '../../assets/githubIcon.png'
 import instagramIcon from '../../assets/instagramIcon.png'
 import { connect } from "react-redux";
-import { addCart,alterQuantity, calculatePrice, calculateShipping, clearCart } from '../../reducers/Home'
+import { addCart, alterQuantity, calculatePrice, calculateShipping, clearCart } from '../../reducers/Home'
 
-import { Button, Card, Modal, Table } from 'react-bootstrap';
+import { Button, Card, Modal, Table, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends React.Component {
@@ -20,7 +20,8 @@ class Home extends React.Component {
         super(props);
         this.state = {
             products: data,
-            modal: false
+            modal: false,
+            alert: false
         }
         console.log("props aq", this.props)
     }
@@ -34,16 +35,19 @@ class Home extends React.Component {
     render() {
         const StyledBadge = withStyles((theme) => ({
             badge: {
-              right: -3,
-              top: 13,
-              border: `2px solid ${theme.palette.background.paper}`,
-              padding: '0 4px',
+                right: -3,
+                top: 13,
+                border: `2px solid ${theme.palette.background.paper}`,
+                padding: '0 4px',
             },
-          }))(Badge);
+        }))(Badge);
         return (
             <>
                 <div className="home">
                     <div className="content">
+                        <Alert className = "sucess-buy" show = {this.state.alert} onClose = {() => this.setState({ alert: false })} variant= "success" dismissible transition>
+                            Compra realizada com sucesso!
+                        </Alert>
                         <Modal show={this.state.modal} onHide={() => this.setState({ modal: false })} size="lg">
                             <Modal.Header closeButton>
                                 <Modal.Title>Carrinho</Modal.Title>
@@ -62,17 +66,17 @@ class Home extends React.Component {
                                             <tr>
                                                 <td>{product.name}</td>
                                                 <td>
-                                                    <button onClick={() => {
-                                                        this.props.alterQuantity(product,"subtract")
+                                                    <button className="quantity" onClick={() => {
+                                                        this.props.alterQuantity(product, "subtract")
                                                         this.props.calculatePrice()
                                                         this.props.calculateShipping()
-                                                        }}> - </button> 
-                                                    {product.quantity} 
-                                                    <button onClick={() => {
-                                                        this.props.alterQuantity(product,"add")
+                                                    }}> - </button>
+                                                    {product.quantity}
+                                                    <button className="quantity" onClick={() => {
+                                                        this.props.alterQuantity(product, "add")
                                                         this.props.calculatePrice()
                                                         this.props.calculateShipping()
-                                                        }}> + </button></td>
+                                                    }}> + </button></td>
                                                 <td>{product.price}</td>
                                             </tr>
                                         </tbody>
@@ -81,7 +85,7 @@ class Home extends React.Component {
                                 <p>valor dos produtos: R$ {this.props.total.toFixed(2)}</p>
                                 <p>frete: R$ {this.props.shipping.toFixed(2)}</p>
                                 <p>desconto: R$ {this.props.discount.toFixed(2)}</p>
-                                <hr/>
+                                <hr />
                                 <h3>Total: R$ {(this.props.total + this.props.shipping - this.props.discount).toFixed(2)}</h3>
                             </Modal.Body>
                             <Modal.Footer>
@@ -90,7 +94,16 @@ class Home extends React.Component {
                                 }}>
                                     Limpar Carrinho
                                 </Button>
-                                <Button variant="primary" onClick={() => console.log("compra finalizada")}>
+                                <Button variant="primary" onClick={() =>{
+                                    this.props.clearCart()
+                                    if(this.props.cart.length > 0){
+                                        this.setState({modal:false, alert: true })
+                                        setTimeout(() => {
+                                            this.setState({alert: false});
+                                        }, 2000);
+
+                                    }
+                                }}>
                                     Finalizar compra
                                 </Button>
                             </Modal.Footer>
@@ -101,7 +114,7 @@ class Home extends React.Component {
                             this.setState({ modal: true })
                         }}>
                             <StyledBadge badgeContent={this.props.cart.length} color="secondary">
-                                <ShoppingCartIcon fontSize="large"/>
+                                <ShoppingCartIcon fontSize="large" />
                             </StyledBadge>
                         </Fab>
                         <div className="carousel-home">
@@ -157,7 +170,7 @@ class Home extends React.Component {
 function mapDispatchToProps(dispatch) {
     return {
         addCart: value => dispatch(addCart(value)),
-        alterQuantity: (product,action) => dispatch(alterQuantity(product,action)),
+        alterQuantity: (product, action) => dispatch(alterQuantity(product, action)),
         calculatePrice: () => dispatch(calculatePrice()),
         clearCart: () => dispatch(clearCart()),
         calculateShipping: () => dispatch(calculateShipping())
