@@ -6,7 +6,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import linkedinIcon from '../../assets/linkedinIcon.png'
 import githubIcon from '../../assets/githubIcon.png'
 import instagramIcon from '../../assets/instagramIcon.png'
-import { Button, Card } from 'react-bootstrap';
+
+import { Button, Card, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends React.Component {
@@ -14,7 +15,8 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: data
+            products: data,
+            modal: false
         }
     }
 
@@ -29,7 +31,24 @@ class Home extends React.Component {
             <>
                 <div className="home">
                     <div className="content">
-                        <Fab color="primary" aria-label="add" className="test">
+                        <Modal show={this.state.modal} onHide={() =>this.setState({modal:false})}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Carrinho</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                Woohoo, you're reading this text in a modal!
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={() =>this.setState({modal:false})}>
+                                    Fechar
+                                </Button>
+                                <Button variant="primary" onClick={() => console.log("teste")}>
+                                    Finalizar compra
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
+
+                        <Fab color="primary" aria-label="add" className="floating-button" onClick={() =>this.setState({modal:true})}>
                             <ShoppingCartIcon fontSize="large" />
                         </Fab>
                         <div className="carousel-home">

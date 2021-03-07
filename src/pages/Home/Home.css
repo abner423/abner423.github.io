@@ -77,10 +77,10 @@
     border-radius: 50%;
     
 }
-img{
+.footer .social-medias img{
     width: 50px;
 }
-.test{
+.floating-button{
     position: fixed !important;
     right: 150px;
     bottom: 100px;
