@@ -1,7 +1,11 @@
 import React from "react";
-import { Container, Row, Col } from 'reactstrap';
 import './Home.css'
 import data from '../../data/products.json'
+import linkedinIcon from '../../assets/linkedinIcon.png'
+import githubIcon from '../../assets/githubIcon.png'
+import instagramIcon from '../../assets/instagramIcon.png'
+import { Button, Card } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends React.Component {
 
@@ -12,7 +16,7 @@ class Home extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
     }
 
     componentWillUnmount() {
@@ -32,22 +36,31 @@ class Home extends React.Component {
                         </div>
 
                         <section className="products-container">
-                            <h1>Lista de Produtos</h1>
+                            <h1>Games</h1>
                             <div className="products-list">
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
-                                <h1 className="product-card">CARD</h1>
+                                {this.state.products.map((product) => (
+                                    <Card className="product-card">
+                                        <Card.Img variant="top" src={`./${product.image}` }/>
+                                        <Card.Body>
+                                            <Card.Title>{product.name}</Card.Title>
+                                            <Card.Text>
+                                                Preço: {product.price}<br />
+                                                Score: {product.score}
+                                            </Card.Text>
+                                            <Button variant="primary">Adicionar no carrinho</Button>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                                
                             </div>
                         </section>
 
                         <div className="footer">
-                            <h1>Footer aqui</h1>
+                            <div className="social-medias">
+                                <a className="media-buttons" href="https://www.linkedin.com/in/abner-filipe/" target = "_blank"><img src={linkedinIcon}/></a>
+                                <a className="media-buttons" href="https://www.instagram.com/abnerfilipe/" target = "_blank"><img src={instagramIcon} /></a>
+                                <a className="media-buttons" href="https://github.com/abner423" target = "_blank"><img src={githubIcon} /></a>
+                            </div>
                         </div>
 
                     </div>

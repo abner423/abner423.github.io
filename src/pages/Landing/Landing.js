@@ -1,4 +1,5 @@
 import React from "react";
+import { Button} from 'react-bootstrap';
 import './landing.css'
 
 class Landing extends React.Component {
@@ -20,7 +21,7 @@ class Landing extends React.Component {
         <div className="landing-description">
             <h1>E-COMMERCE DE GAMES</h1>
             <h3>Seu melhor site para compra de jogos</h3>
-            <button>start</button>
+            <Button variant="success" className = "start-landing" style = {{"font-size":"60px", "border-radius":"20px"}}>start</Button>
         </div>
       </>
     );
