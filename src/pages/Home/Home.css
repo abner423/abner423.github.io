@@ -94,5 +94,16 @@
     position: absolute !important;
     display: flex;
     justify-content: center;
+    top:0;
     width: 60%;
+}
+.products-container-title{
+    display: flex;
+    padding-left: 150px;
+    padding-right: 120px;
+    width: 100%;
+    justify-content: space-between;
+}
+#demo-controlled-open-select{
+    width:150px
 }
