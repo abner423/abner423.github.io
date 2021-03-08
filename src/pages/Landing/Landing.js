@@ -19,9 +19,9 @@ class Landing extends React.Component {
         <div className="image-landing"></div>
 
         <div className="landing-description">
-            <h1>E-COMMERCE DE GAMES</h1>
-            <h3>Seu melhor site para compra de jogos</h3>
-            <Button variant="success" className = "start-landing" style = {{"font-size":"60px", "border-radius":"20px"}} href="/home">Start</Button>
+            E-COMMERCE DE GAMES
+            <h4>Seu melhor site para compra de jogos</h4>
+            <Button variant="success" className = "start-landing" style = {{"font-size":"30px", "border-radius":"20px"}} href="/home">Start</Button>
         </div>
       </>
     );

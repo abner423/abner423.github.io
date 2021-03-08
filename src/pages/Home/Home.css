@@ -3,7 +3,7 @@
     background-image: url('../../assets/testeFumaca.jpg');
     background-size: 100% 1000px;
     background-repeat: repeat;
-    
+    background-attachment: fixed;
     justify-content: center;
 }
 
@@ -16,8 +16,8 @@
 }
 .carousel-text{
     color: white;
-    font-size: 32px;
-    padding-right: 200px;
+    font-size: 20px;
+    padding-right: 50px;
     padding-top: 20px;
 }
 
@@ -49,9 +49,9 @@
 
 .product-card{
     display: flex;
-    width: 300px;
-    margin-left: 100px;
-    height: 500px;
+    width: 200px;
+    margin-left: 50px;
+    height: 450px;
     margin-top: 3%;
 }
 
@@ -78,14 +78,14 @@
     
 }
 .footer .social-medias img{
-    width: 50px;
+    width: 40px;
 }
 .floating-button{
     position: fixed !important;
     right: 150px;
-    bottom: 100px;
-    width: 100px !important;
-    height: 100px !important;
+    bottom: 50px;
+    width: 70px !important;
+    height: 70px !important;
 }
 .quantity{
     border-color: wheat;
@@ -99,8 +99,8 @@
 }
 .products-container-title{
     display: flex;
-    padding-left: 150px;
-    padding-right: 120px;
+    padding-left: 80px;
+    padding-right: 40px;
     width: 100%;
     justify-content: space-between;
 }

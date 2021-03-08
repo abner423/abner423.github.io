@@ -9,12 +9,14 @@
 
 .landing-description{
     padding-left: 10%;
+    font-size: 60px;
+    font-weight: bold;
     padding-top: 2%;
 }
 .start-landing{
-    margin-top: 20px;
-    width: 180px;
-    height: 100px;
+    margin-top: -30px;
+    width: 100px;
+    height: 60px;
     
 }
 

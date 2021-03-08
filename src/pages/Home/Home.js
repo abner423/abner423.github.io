@@ -52,7 +52,7 @@ class Home extends React.Component {
                         <Alert className="sucess-buy" show={this.state.alert} onClose={() => this.setState({ alert: false })} variant="success" dismissible transition>
                             Compra realizada com sucesso!
                         </Alert>
-                        <Modal show={this.state.modal} onHide={() => this.setState({ modal: false })} size="lg">
+                        <Modal show={this.state.modal} onHide={() => this.setState({ modal: false })} size="lg" centered>
                             <Modal.Header closeButton>
                                 <Modal.Title>Carrinho</Modal.Title>
                             </Modal.Header>
@@ -113,14 +113,6 @@ class Home extends React.Component {
                             </Modal.Footer>
                         </Modal>
 
-                        <Fab color="primary" aria-label="add" className="floating-button" onClick={() => {
-                            this.props.calculatePrice()
-                            this.setState({ modal: true })
-                        }}>
-                            <StyledBadge badgeContent={this.props.cart.length} color="secondary">
-                                <ShoppingCartIcon fontSize="large" />
-                            </StyledBadge>
-                        </Fab>
                         <div className="carousel-home">
                             <div className="carousel-text">
                                 Frete Grátis <br />
@@ -195,12 +187,20 @@ class Home extends React.Component {
                                             <Button variant="primary" onClick={() => {
                                                 this.props.addCart(product)
                                                 this.props.calculateShipping()
-                                            }}>Adicionar no carrinho</Button>
+                                            }}>Adicionar ao carrinho</Button>
                                         </Card.Body>
                                     </Card>
                                 ))}
 
                             </div>
+                            <Fab color="primary" aria-label="add" className="floating-button" onClick={() => {
+                            this.props.calculatePrice()
+                            this.setState({ modal: true })
+                        }}>
+                            <StyledBadge badgeContent={this.props.cart.length} color="secondary">
+                                <ShoppingCartIcon fontSize="large" />
+                            </StyledBadge>
+                        </Fab>
                         </section>
 
                         <div className="footer">
