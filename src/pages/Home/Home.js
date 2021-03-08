@@ -28,7 +28,6 @@ class Home extends React.Component {
             order: false,
             filter: "none",
         }
-        console.log("props aq", this.props)
     }
 
     componentDidMount() {
@@ -175,7 +174,6 @@ class Home extends React.Component {
                                                     }
                                                 })
                                             })
-                                            console.log("trocou o state ", this.state)
                                         }}
                                     >
                                         <MenuItem value={"price"}>Preço</MenuItem>
@@ -197,7 +195,6 @@ class Home extends React.Component {
                                             <Button variant="primary" onClick={() => {
                                                 this.props.addCart(product)
                                                 this.props.calculateShipping()
-                                                console.log("teste", this.props)
                                             }}>Adicionar no carrinho</Button>
                                         </Card.Body>
                                     </Card>
