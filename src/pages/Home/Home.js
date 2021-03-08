@@ -49,10 +49,8 @@ class Home extends React.Component {
             <>
                 <div className="home">
                     <div className="content">
-                        <Alert className="sucess-buy" show={this.state.alert} onClose={() => this.setState({ alert: false })} variant="success" dismissible transition>
-                            Compra realizada com sucesso!
-                        </Alert>
-                        <Modal show={this.state.modal} onHide={() => this.setState({ modal: false })} size="lg" centered>
+
+                        <Modal show={this.state.modal} onHide={() => this.setState({ modal: false })} size="lg" centered className="alou">
                             <Modal.Header closeButton>
                                 <Modal.Title>Carrinho</Modal.Title>
                             </Modal.Header>
@@ -193,6 +191,9 @@ class Home extends React.Component {
                                 ))}
 
                             </div>
+                            <Alert className="sucess-buy" show={this.state.alert} onClose={() => this.setState({ alert: false })} variant="success" dismissible transition>
+                                Compra realizada com sucesso!
+                            </Alert>
                             <Fab color="primary" aria-label="add" className="floating-button" onClick={() => {
                             this.props.calculatePrice()
                             this.setState({ modal: true })
@@ -201,8 +202,8 @@ class Home extends React.Component {
                                 <ShoppingCartIcon fontSize="large" />
                             </StyledBadge>
                         </Fab>
+                        
                         </section>
-
                         <div className="footer">
                             <div className="social-medias">
                                 <a className="media-buttons" href="https://www.linkedin.com/in/abner-filipe/" target="_blank"><img src={linkedinIcon} /></a>

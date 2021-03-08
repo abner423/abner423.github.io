@@ -91,7 +91,7 @@
     border-color: wheat;
 }
 .sucess-buy{
-    position: absolute !important;
+    position: fixed !important;
     display: flex;
     justify-content: center;
     top:0;
